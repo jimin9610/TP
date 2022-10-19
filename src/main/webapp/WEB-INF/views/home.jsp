@@ -7,6 +7,7 @@
 <body>
 <jsp:include page="./include/header.jsp"></jsp:include>
 
+test
 <P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>
