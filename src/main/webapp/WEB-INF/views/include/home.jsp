@@ -6,7 +6,5 @@
 </head>
 <body>
 <jsp:include page="header.jsp"/>
-
-<P>  The time on the server is ${serverTime}. </P>
 </body>
 </html>

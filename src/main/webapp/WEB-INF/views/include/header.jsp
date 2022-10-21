@@ -1,150 +1,131 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page contentType="text/html; charset=UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql" %>
+
+<%
+	//정상적인 로그인 사용자인 경우 세션 정보를 가져온다
+	String sessionId = (String) session.getAttribute("sessionId");
+%>
+
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<!-- Bootstrap -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <title>상품관리</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+<!-- jQuery library -->
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<!-- Popper JS -->
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+<!-- Latest compiled JavaScript -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- 아이콘 -->
-<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-<!-- css -->   
-<link rel="stylesheet" href="resources/css/style.css">
-<!-- 구글 폰트 -->
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400&display=swap" rel="stylesheet">
-<!-- CSS영역 시작(확인 후 CSS파일 따로 만들어서 관리) -->
-<style>
-/*구글 폰트 임포트*/
-@charset "UTF-8";
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@500&display=swap');
-*{
-   font-family: 'Noto Sans KR', sans-serif;
-}
-/*폰트 크기*/
-body{
-   font-size: 16px;
-   font-family: 'Noto Sans KR', sans-serif;
-}
+<!-- 아이콘 표시 -->
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> 
 
-/*placeholder 글자 크기 조정*/
-input::placeholder {
-   font-size: 14px;    
-}
-textarea::placeholder {
-   font-size: 14px;    
-}
-/*textarea 리사이징 막기*/
-textarea{
-   resize: none;
-}
-/*a태그 밑줄 삭제*/
-a:hover {
-   text-decoration: none;
-}
-</style>
-<!-- CSS영역 끝 -->   
+<%-- datepicker 관련 설정 --%>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery.min.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
-<%
-   String session_id = (String)session.getAttribute("id");
-%>
-<header>
-      <div id="top-header" style="height: 50px;">
-         <div class="container">
-               <ul class="header-links pull-left">
-                  <li style="font-size: 16px;"><a href="#"><i class="fa fa-phone"></i> 000-0000-0000</a></li>
-                  <li style="font-size: 16px;"><a href="#"><i class="fa fa-envelope-o"></i>준행이형은@멋있어.com</a></li>
-                  <li style="font-size: 16px;"><a href="#"><i class="fa fa-map-marker"></i>왕자님이계신곳</a></li>
-               </ul>
-            <ul class="header-links pull-right">
-               <li style="font-size: 16px;"><a href="#"><i class="fa fa-user-plus"></i>회원가입</a></li>
-               <%
-         if(session_id != null){
-         %>
-         <li style="font-size: 16px;"><a href="#"><i class="fa fa-right-from-bracket"></i>로그아웃</a>
-             <%
-         }else{
-         %>
-         <li style="font-size: 16px;"><a href="#"><i class="fa fa-arrow-right-to-bracket"></i>로그인</a>
-         <%   
-         }
-           %>
-         </li>
-            </ul>
-         </div>
-      </div>
-      <div id="header">
-         <div class="container">
-            <div class="row">
-               <!-- 로고 -->
-               <div class="col-md-3">
-                  <div class="header-logo">
-                     <a href="#" class="logo" >
-                        <img style="height:85px" src="/resources/images/logo.png">
-                     </a>
-                  </div>
-               </div>
-               <!-- /로고 -->
-               <!-- 검색 -->
-               <div class="col-md-6">
-                  <div class="header-search">
-                     <form>
-                        <select class="input-select">
-                           <option>전체검색</option>
-                           <option>카테고리1</option>
-                           <option>카테고리2</option>
-                        </select>
-                        <input class="input" placeholder="검색내용입력">
-                        <button class="search-btn">검색</button>
-                     </form>
-                  </div>
-               </div>
-               <!-- /검색 -->
-               <div class="col-md-3 clearfix">
-                  <div class="header-ctn">
-                     <!-- 찜목록 -->
-                     <div>
-                        <a href="#">
-                           <i class="fa fa-heart-o" style="font-size: 25px;"></i>
-                           <span style="font-size: 16px;">찜목록</span>
-                           <div class="qty">2</div>
-                        </a>
-                     </div>
-                     <!-- /찜목록 -->
 
-                     <!-- 장바구니 -->
-                     <div>
-                        <a href="#">
-                           <i class="fa fa-shopping-cart" style="font-size: 25px;"></i>
-                           <span style="font-size: 16px;">장바구니</span>
-                           <div class="qty">0</div>
-                        </a>
-                     </div>
-                     <!-- /장바구니 -->
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </header>
-   <!-- /HEADER -->
+<nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top">
+  <a style="padding-top:8px; color:yellow;font-size:18px" class="navbar-brand" href="welcome.jsp">한국쇼핑몰</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenuList" aria-controls="navbarMenuList" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-   <nav id="navigation">
-      <div class="container">
-         <div id="responsive-nav">
-            <ul class="main-nav nav">
-               <li class="active nav-item"><a class="nav-link" href="#">Home</a></li>
-               <li class="nav-item" ><a class="nav-link" href="#">뭘</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">넣</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">어</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">야</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">될</a></li>
-               <li class="nav-item"><a class="nav-link" href="#">까</a></li>
-            </ul>
-         </div>
-      </div>
-   </nav>
+  <!-- 메뉴를 반응형으로 해상도에 따라 표시 -->
+  <div class="collapse navbar-collapse" id="navbarMenuList">
+    <ul class="navbar-nav">
+	      <li class="nav-item dropdown">
+	        <a style="padding-top:8px; color:white;font-size:18px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+	          게시판
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="<c:url value="/BoardListAction.do?pageNum=1"/>">게시판</a>
+	        </div>
+	      </li>
+	      <li class="nav-item dropdown">
+	        <a style="padding-top:8px; color:white;font-size:18px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+	          쇼핑몰
+	        </a>
+	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+	          <a class="dropdown-item" href="<c:url value="/products.jsp"/>">상품리스트</a>
+	        </div>
+	      </li>
+      </ul>
+   </div>
+      
+   <div class="collapse navbar-collapse justify-content-end" id="navbarMenuList">
+	      <!-- 메뉴 설정 -->
+	      <ul class="navbar-nav">
+	          <li>
+	            <ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" style="padding-top:8px;padding-right:60px; color:#F1FD0C;font-size:18px" class="dropdown-item" href="<c:url value="/cart.jsp"/>"><i class="fa fa-shopping-cart fa-2x align-middle"></i></a></li>
+				</ul>
+	          </li>
+	          <!-- 대메뉴를 클릭시 서브메뉴를 작성 -->
+		      <li class="nav-item dropdown">
+			   	 <c:choose>
+			   	 	<%-- 사용자가 로그인을 안한 경우 --%>
+					<c:when test="${empty sessionId}">
+					  <ul class="navbar-nav">
+					      <li class="nav-item"><a class="nav-link" style="padding-top:8px; color:#F1FD0C;font-size:18px" class="dropdown-item" href="<c:url value="/member/login.jsp"/>"><i class="fa fa-sign-in fa-2x align-middle"></i> 로그인</a></li>
+					      <li class="nav-item"><a class="nav-link" style="padding-top:8px; color:#F1FD0C;font-size:18px" class="dropdown-item" href="<c:url value="/member/join.jsp"/>"><i class="fa fa-user-circle fa-2x align-middle"></i> 회원가입</a></li>
+				      </ul>
+					</c:when>
+					<%-- 관리자 아이디로 로그인시 처리 --%>
+					<c:when test="${sessionId == 'admin'}">
+					      <li style="padding-top:8px;color:white;font-size:20px;padding-right:60px;">
+					         <c:if test="${not empty result.rows}">
+					         	<c:forEach
+								var="row" items="${result.rows}"><c:out value="${row.name}" />
+								<c:set var="loginName" scope="session" value="${row.name}"/>
+							 </c:forEach>님 반갑습니다.
+					         </c:if>
+						  </li>
+						  <%-- 관리자용 전용 메뉴 출력 --%>
+					      <li class="nav-item dropdown">
+					      	<a style="padding-top:8px; color:white;font-size:18px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+	          					관리자용
+	        				</a>
+					        <ul class="dropdown-menu dropdown-menu-right">
+					          <li class="dropdown-item"><a class="dropdown-item" href="<c:url value="/addProduct.jsp"/>">상품정보 등록</a></li>
+					          <li class="dropdown-item"><a class="dropdown-item" href="<c:url value="/editProduct.jsp?edit=update"/>">상품정보 수정</a></li>
+					          <li class="dropdown-item"><a class="dropdown-item" href="<c:url value="/editProduct.jsp?edit=delete"/>">상품정보 삭제</a></li>
+					          <li class="dropdown-item"><a class="dropdown-item" href="<c:url value="/member/logout.jsp"/>">로그아웃 </a></li>
+						      <li class="dropdown-item"><a class="dropdown-item" href="<c:url value="/member/memberUpdate.jsp?id=${sessionId}"/>">회원 수정</a></li>
+					        </ul>
+					      </li>  
+					</c:when>
+					
+					<%-- 일반 사용자가 로그인시 처리 --%>
+					<c:when test="${sessionId != 'admin'}">
+					<ul class="navbar-nav">
+						<li style="padding-top:8px;color:white;font-size:20px;padding-right:60px;">
+					         <c:if test="${not empty result.rows}">
+					         	<c:forEach
+								var="row" items="${result.rows}"><c:out value="${row.name}" />
+								<c:set var="loginName" scope="session" value="${row.name}"/>
+							 </c:forEach>님 반갑습니다.
+					         </c:if>
+						  </li>
+						<li class="nav-item"><a style="padding-top:9px; color:white;font-size:17px" class="btn btn-lg nav-link" href="<c:url value="/member/logout.jsp"/>">로그아웃 </a></li>
+						<li class="nav-item"><a style="padding-top:9px; color:white;font-size:17px" class="btn btn-lg nav-link" href="<c:url value="/member/memberUpdate.jsp?id=${sessionId}"/>">회원 수정</a></li>
+						<li class="nav-item"><a style="padding-top:9px; color:white;font-size:17px" class="btn btn-lg nav-link" href="<c:url value="/member/memberDelete.jsp?id=${sessionId}"/>">회원 삭제</a></li>
+					</ul>
+					</c:when>	
+				 </c:choose>
+			 </li>
+	   	</ul>
+	</div>     	
+</nav>
+<hr>
+</body>
+</html>
