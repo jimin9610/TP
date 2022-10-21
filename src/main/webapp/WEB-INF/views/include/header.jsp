@@ -29,13 +29,14 @@
 
 <%-- datepicker 관련 설정 --%>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+
 <script src="//code.jquery.com/jquery.min.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-primary sticky-top">
-  <a style="padding-top:8px; color:yellow;font-size:18px" class="navbar-brand" href="welcome.jsp">한국쇼핑몰</a>
+<nav class="navbar navbar-expand-md navbar-light bg-secondary sticky-top">
+  <a style="padding-top:8px; color:yellow;font-size:18px" class="navbar-brand" href="/"><img src="/resources/images/logo.png" style="height:60px"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenuList" aria-controls="navbarMenuList" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -48,15 +49,26 @@
 	          게시판
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="<c:url value="/BoardListAction.do?pageNum=1"/>">게시판</a>
+	          <a class="dropdown-item" href="<c:url value="/notice"/>">공지사항</a>
+	          <a class="dropdown-item" href="<c:url value="/qna"/>">Q&A</a>
 	        </div>
 	      </li>
 	      <li class="nav-item dropdown">
 	        <a style="padding-top:8px; color:white;font-size:18px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
-	          쇼핑몰
+	          Shoot
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="<c:url value="/products.jsp"/>">상품리스트</a>
+	          <h2 class="dropdown-header" style="color: black">Brands</h2>
+	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Sony</a>
+	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Nikkon</a>
+	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Canon</a>
+	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">etc</a>
+	          <div class="dropdown-divider"></div>
+	          <h2 class="dropdown-header" style="color: black">Option</h2>
+	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Mirror-less</a>
+	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">DSLR</a>
+	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Polariod</a>
+	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">etc</a>
 	        </div>
 	      </li>
       </ul>
@@ -67,7 +79,7 @@
 	      <ul class="navbar-nav">
 	          <li>
 	            <ul class="navbar-nav">
-					<li class="nav-item"><a class="nav-link" style="padding-top:8px;padding-right:60px; color:#F1FD0C;font-size:18px" class="dropdown-item" href="<c:url value="/cart.jsp"/>"><i class="fa fa-shopping-cart fa-2x align-middle"></i></a></li>
+					
 				</ul>
 	          </li>
 	          <!-- 대메뉴를 클릭시 서브메뉴를 작성 -->
@@ -76,8 +88,8 @@
 			   	 	<%-- 사용자가 로그인을 안한 경우 --%>
 					<c:when test="${empty sessionId}">
 					  <ul class="navbar-nav">
-					      <li class="nav-item"><a class="nav-link" style="padding-top:8px; color:#F1FD0C;font-size:18px" class="dropdown-item" href="<c:url value="/member/login.jsp"/>"><i class="fa fa-sign-in fa-2x align-middle"></i> 로그인</a></li>
-					      <li class="nav-item"><a class="nav-link" style="padding-top:8px; color:#F1FD0C;font-size:18px" class="dropdown-item" href="<c:url value="/member/join.jsp"/>"><i class="fa fa-user-circle fa-2x align-middle"></i> 회원가입</a></li>
+					      <li class="nav-item"><a class="nav-link" style="padding-top:8px; color:#ffffff;font-size:18px" class="dropdown-item" href="<c:url value="/member/login"/>"><i class="fa fa-sign-in fa-2x align-middle"></i> 로그인</a></li>
+					      <li class="nav-item"><a class="nav-link" style="padding-top:8px; color:#ffffff;font-size:18px" class="dropdown-item" href="<c:url value="/member/join"/>"><i class="fa fa-user-circle fa-2x align-middle"></i> 회원가입</a></li>
 				      </ul>
 					</c:when>
 					<%-- 관리자 아이디로 로그인시 처리 --%>
@@ -119,6 +131,7 @@
 						<li class="nav-item"><a style="padding-top:9px; color:white;font-size:17px" class="btn btn-lg nav-link" href="<c:url value="/member/logout.jsp"/>">로그아웃 </a></li>
 						<li class="nav-item"><a style="padding-top:9px; color:white;font-size:17px" class="btn btn-lg nav-link" href="<c:url value="/member/memberUpdate.jsp?id=${sessionId}"/>">회원 수정</a></li>
 						<li class="nav-item"><a style="padding-top:9px; color:white;font-size:17px" class="btn btn-lg nav-link" href="<c:url value="/member/memberDelete.jsp?id=${sessionId}"/>">회원 삭제</a></li>
+						<li class="nav-item"><a class="nav-link btn btn-secondary" style="padding-top:8px;padding-right:60px; color:#ffffff;font-size:18px" class="dropdown-item" href="<c:url value="/cart"/>"><i class="fa fa-shopping-cart fa-2x"></i></a></li>
 					</ul>
 					</c:when>	
 				 </c:choose>
