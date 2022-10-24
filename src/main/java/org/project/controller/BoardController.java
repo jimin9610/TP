@@ -15,5 +15,13 @@ public class BoardController {
 		return "board/notice";
 		
 	}
+	
+	//http://localhost:8080/board/qna
+	@GetMapping("/qna")
+	public String qna() {
+		
+		return "board/qna";
+		
+	}
 
 }

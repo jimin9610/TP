@@ -23,5 +23,13 @@ public class MemberController {
 		return "/member/join";
 		
 	}
+	
+	//http://localhost:8080/member/myPage
+	@GetMapping("/myPage")
+	public String myPage() {
+		
+		return "/member/myPage";
+		
+	}
 
 }

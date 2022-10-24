@@ -49,8 +49,8 @@
 	          게시판
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	          <a class="dropdown-item" href="<c:url value="/notice"/>">공지사항</a>
-	          <a class="dropdown-item" href="<c:url value="/qna"/>">Q&A</a>
+	          <a class="dropdown-item" href="<c:url value="/board/notice"/>">공지사항</a>
+	          <a class="dropdown-item" href="<c:url value="/board/qna"/>">Q&A</a>
 	        </div>
 	      </li>
 	      <li class="nav-item dropdown">
@@ -59,16 +59,16 @@
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	          <h2 class="dropdown-header" style="color: black">Brands</h2>
-	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Sony</a>
-	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Nikkon</a>
-	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Canon</a>
-	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">etc</a>
+	          <a class="dropdown-header" href="<c:url value="/products?prod=Sony"/>">Sony</a>
+	          <a class="dropdown-header" href="<c:url value="/products?prod=Nikkon"/>">Nikkon</a>
+	          <a class="dropdown-header" href="<c:url value="/products?prod=Canon"/>">Canon</a>
+	          <a class="dropdown-header" href="<c:url value="/products?prod=etc"/>">etc</a>
 	          <div class="dropdown-divider"></div>
 	          <h2 class="dropdown-header" style="color: black">Option</h2>
-	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Mirror-less</a>
-	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">DSLR</a>
-	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">Polariod</a>
-	          <a class="dropdown-header" href="<c:url value="/products.jsp"/>">etc</a>
+	          <a class="dropdown-header" href="<c:url value="/products?cat=Mirror-less"/>">Mirror-less</a>
+	          <a class="dropdown-header" href="<c:url value="/products?cat=DSLR"/>">DSLR</a>
+	          <a class="dropdown-header" href="<c:url value="/products?cat=Polariod"/>">Polariod</a>
+	          <a class="dropdown-header" href="<c:url value="/products?cat=etc"/>">etc</a>
 	        </div>
 	      </li>
       </ul>

@@ -85,9 +85,7 @@
         }).open();
     }
 </script>
-<script>
-	$.a
-</script>
+
 </head>
 <body>
 	<%-- 타이틀 선언 --%>
@@ -99,15 +97,14 @@
 	
 	<div class="container">
 	
-		<form name="newMember" action="./join_process.jsp" class="form-horizontal" 
-		      method="post">
+		<form name="newMember" action="/join" class="form-horizontal" method="post">
 		      
 		      <input type="hidden" name="retValue" id="retValue">
 		      
 			<div class="form-group row">
 				<label class="col-sm-2 text-center">아이디</label>
 				<div class="col-sm-3">
-					<input type="text" id="id" name="id"  class="form-control">
+					<input type="text" id="id" name="id"  class="form-control" required="required">
 				</div>
 				<input type="button" class="btn btn-dark" style="width:70px" value="check" name="idCheck">
 			</div>
@@ -115,35 +112,42 @@
 			<div class="form-group row">
 				<label class="col-sm-2 text-center">비밀번호</label>
 				<div class="col-sm-3">
-					<input type="password" id="passwd" name="passwd" class="form-control">
+					<input type="password" id="passwd" name="passwd" class="form-control" required="required">
+				</div>
+			</div>
+			
+			<div class="form-group row">
+				<label class="col-sm-2 text-center">비밀번호 확인</label>
+				<div class="col-sm-3">
+					<input type="password" id="passwd2" name="passwd2" class="form-control" required="required">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2 text-center">이름</label>
 				<div class="col-sm-3">
-					<input type="text" id="name" name="name" class="form-control">
+					<input type="text" id="name" name="name" class="form-control" required="required">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2 text-center">연락처</label>
 				<div class="col-sm-3">
-					<input type="text" id="phone" name="phone" class="form-control">
+					<input type="text" id="phone" name="phone" class="form-control" required="required">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2 text-center">이메일</label>
 				<div class="col-sm-3">
-					<input type="text" id="email" name="email" class="form-control">
+					<input type="text" id="email" name="email" class="form-control" required="required">
 				</div>
 			</div>
 			
 			<div class="form-group row">
 				<label class="col-sm-2 text-center">생일</label>
 				<div class="col-sm-3">
-					<input type="text" id="birthday" name="birthday" class="form-control">
+					<input type="text" id="birthday" name="birthday" class="form-control" required="required">
 				</div>
 			</div>
 
@@ -154,7 +158,8 @@
 					       name="postCd" 
 					       readonly="readonly"
 					       class="col-sm-2" 
-						   type="text" class="form-control">
+						   type="text" class="form-control"
+						   required="required">
 					<i class="col-sm-2 fa fa-search" onclick="postSearch()" style="color:#000;font-size:20px;"></i>         
 				</div>
 			</div>
@@ -162,7 +167,7 @@
 			<div class="form-group row">
 				<label class="col-sm-2 text-center">주소</label>
 				<div class="col-sm-7">
-					<input id="addr" name="addr" type="text" class="form-control" readonly="readonly"/>
+					<input id="addr" name="addr" type="text" class="form-control" readonly="readonly" required="required"/>
 				</div>
 			</div>
 			
@@ -171,7 +176,8 @@
 				<div class="col-sm-7">
 					<input id="addr2" 
 					       name="addr2" 
-					       type="text" class="form-control"/>
+					       type="text" class="form-control"
+					        required="required"/>
 				</div>
 			</div>					
 
