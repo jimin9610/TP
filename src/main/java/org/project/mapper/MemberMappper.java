@@ -1,4 +1,4 @@
-package org.bigdata.mapper;
+package org.project.mapper;
 
 public class MemberMappper {
 
