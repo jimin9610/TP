@@ -15,7 +15,9 @@
   </div>
 </div>
 
-<div class="h4" style="text-align: center;">※주요 공지사항※</div>
+<div class="alert col-lg-2 mx-auto" style="text-align: center;font-size: 18px;background-color: #d7d7d7">
+  FAQ
+</div>
 
 <div class="accordion col-lg-6 mx-auto" id="accordionExample">
   <div class="card border border-white">

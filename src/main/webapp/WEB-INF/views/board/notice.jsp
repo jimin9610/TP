@@ -16,7 +16,7 @@
 </div>
 
 <table class="table table-striped table-active table-hover col-lg-8 mx-auto">
-  <thead>
+  <thead style="background-color: #6a6a6a;color: white;">
     <tr>
       <th scope="col">#</th>
       <th scope="col">First</th>

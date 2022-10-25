@@ -59,10 +59,10 @@
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	          <h2 class="dropdown-header" style="color: black">Brands</h2>
-	          <a class="dropdown-header" href="<c:url value="/products?prod=Sony"/>">Sony</a>
-	          <a class="dropdown-header" href="<c:url value="/products?prod=Nikkon"/>">Nikkon</a>
-	          <a class="dropdown-header" href="<c:url value="/products?prod=Canon"/>">Canon</a>
-	          <a class="dropdown-header" href="<c:url value="/products?prod=etc"/>">etc</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList"/>">Sony</a>
+	          <a class="dropdown-header" href="<c:url value="/product/divte"/>">Nikkon</a>
+	          <a class="dropdown-header" href="<c:url value="/product?prod=Canon"/>">Canon</a>
+	          <a class="dropdown-header" href="<c:url value="/product/product"/>">etc</a>
 	          <div class="dropdown-divider"></div>
 	          <h2 class="dropdown-header" style="color: black">Option</h2>
 	          <a class="dropdown-header" href="<c:url value="/products?cat=Mirror-less"/>">Mirror-less</a>
@@ -139,6 +139,5 @@
 	   	</ul>
 	</div>     	
 </nav>
-<hr>
 </body>
 </html>
