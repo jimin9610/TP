@@ -35,7 +35,7 @@
 </head>
 <body>
 
-<nav class="navbar navbar-expand-md navbar-light bg-secondary sticky-top">
+<nav class="navbar navbar-expand-md navbar-light bg-light sticky-top">
   <a style="padding-top:8px; color:yellow;font-size:18px" class="navbar-brand" href="/"><img src="/resources/images/logo.png" style="height:60px"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMenuList" aria-controls="navbarMenuList" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -45,7 +45,7 @@
   <div class="collapse navbar-collapse" id="navbarMenuList">
     <ul class="navbar-nav">
 	      <li class="nav-item dropdown">
-	        <a style="padding-top:8px; color:white;font-size:18px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+	        <a style="padding-top:8px; color:black;font-size:18px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
 	          게시판
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -54,21 +54,21 @@
 	        </div>
 	      </li>
 	      <li class="nav-item dropdown">
-	        <a style="padding-top:8px; color:white;font-size:18px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
+	        <a style="padding-top:8px; color:black;font-size:18px" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-expanded="false">
 	          Shoot
 	        </a>
 	        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	          <h2 class="dropdown-header" style="color: black">Brands</h2>
-	          <a class="dropdown-header" href="<c:url value="/product/productList"/>">Sony</a>
-	          <a class="dropdown-header" href="<c:url value="/product/divte"/>">Nikkon</a>
-	          <a class="dropdown-header" href="<c:url value="/product?prod=Canon"/>">Canon</a>
-	          <a class="dropdown-header" href="<c:url value="/product/product"/>">etc</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList?prod=Sony"/>">Sony</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList?prod=Nikkon"/>">Nikkon</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList?prod=Canon"/>">Canon</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList"/>">etc</a>
 	          <div class="dropdown-divider"></div>
 	          <h2 class="dropdown-header" style="color: black">Option</h2>
-	          <a class="dropdown-header" href="<c:url value="/products?cat=Mirror-less"/>">Mirror-less</a>
-	          <a class="dropdown-header" href="<c:url value="/products?cat=DSLR"/>">DSLR</a>
-	          <a class="dropdown-header" href="<c:url value="/products?cat=Polariod"/>">Polariod</a>
-	          <a class="dropdown-header" href="<c:url value="/products?cat=etc"/>">etc</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList?cat=Mirror-less"/>">Mirror-less</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList?cat=DSLR"/>">DSLR</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList?cat=Polariod"/>">Polariod</a>
+	          <a class="dropdown-header" href="<c:url value="/product/productList?cat=etc"/>">etc</a>
 	        </div>
 	      </li>
       </ul>
@@ -88,9 +88,9 @@
 			   	 	<%-- 사용자가 로그인을 안한 경우 --%>
 					<c:when test="${empty sessionId}">
 					  <ul class="navbar-nav">
-					      <li class="nav-item"><a class="nav-link" style="padding-top:8px; color:#ffffff;font-size:18px" class="dropdown-item" href="<c:url value="/member/login"/>"><i class="fa fa-sign-in fa-2x align-middle"></i> 로그인</a></li>
-					      <li class="nav-item"><a class="nav-link" style="padding-top:8px; color:#ffffff;font-size:18px" class="dropdown-item" href="<c:url value="/member/join"/>"><i class="fa fa-user-circle fa-2x align-middle"></i> 회원가입</a></li>
-				      </ul>
+					      <li class="nav-item"><a class="btn btn-outline-light" style="padding-top:8px" class="dropdown-item" href="<c:url value="/member/login"/>"><i class="fa fa-sign-in fa-2x align-middle" style="color:black"></i><br><font size="2px">로그인</font></a></li>
+					      <li class="nav-item"><a class="btn btn-outline-light" style="padding-top:8px" class="dropdown-item" href="<c:url value="/member/join"/>"><i class="fa fa-user-circle fa-2x align-middle" style="color:black"></i><br><font size="2px">회원가입</font></a></li>
+					  </ul>
 					</c:when>
 					<%-- 관리자 아이디로 로그인시 처리 --%>
 					<c:when test="${sessionId == 'admin'}">

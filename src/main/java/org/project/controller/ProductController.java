@@ -22,10 +22,31 @@ public class ProductController {
 		
 	}
 	
-	@GetMapping("/divte")
-	public String divte() {
+	@GetMapping("/cart")
+	public String cart() {
 		
-		return "/product/divte";
+		return "/product/cart";
+		
+	}
+	
+	@GetMapping("/orderConfirm")
+	public String orderConfirm() {
+		
+		return "/product/orderConfirm";
+		
+	}
+	
+	@GetMapping("/orderComplete")
+	public String orderComplete() {
+		
+		return "/product/orderComplete";
+		
+	}
+	
+	@GetMapping("/purchaseList")
+	public String purchaseList() {
+		
+		return "/product/purchaseList";
 		
 	}
 	

@@ -29,9 +29,9 @@
 			<h4>가격</h4>
 			<p>
 			<form name="addForm" 
-			      action="./addCart.jsp?id=" method="post">
-				<a href="#" class="btn btn-info" onclick="addToCart();">상품주문 &raquo;</a>
-				<a href="./cart.jsp" class="btn btn-secondary">장바구니 &raquo;</a>
+			      action="/addCart" method="post">
+				<a href="/product/cart" class="btn btn-info" onclick="addToCart();">상품주문 &raquo;</a>
+				<a href="/product/cart" class="btn btn-secondary">장바구니 확인 &raquo;</a>
 				<a href="/product/productList" class="btn btn-dark">상품목록 &raquo;</a>
 			</form>
 		</div>
@@ -42,6 +42,9 @@
 <jsp:include page="ask.jsp"/>
 
 <jsp:include page="review.jsp"/>
+
+
+<jsp:include page="../include/footer.jsp"/>
 
 </body>
 </html>

@@ -1,41 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>회원등록</title>
-<jsp:include page="../include/header.jsp"/>   
+<title>Insert title here</title>
+<jsp:include page="../include/header.jsp"/>
+<!-- datePicker 선언 -->
 <script>
 	$(function(){
-		$("#birthday").datepicker({
+		$("#shippingDate").datepicker({
 			changeMonth:true,
 			changeYear:true,
 			dateFormat:"yy-mm-dd",
 			prevText:"이전 달",
 			nextText:"다음 달",
-			monthNames:['1월','2월','3월','4월',
-						'5월','6월','7월','8월',
-						'9월','10월','11월','12월'
+			monthNames:['1월','2월','3월','4월','5월','6월',
+				        '7월','8월','9월','10월','11월','12월'
 				       ],
-			monthNamesShort:['1월','2월','3월','4월',
-							'5월','6월','7월','8월',
-							'9월','10월','11월','12월'
-					       ],
+			monthNamesShort:['1월','2월','3월','4월','5월','6월',
+					        '7월','8월','9월','10월','11월','12월'
+					       ],	
 			dayNames:['일','월','화','수','목','금','토'],
 			dayNamesShort:['일','월','화','수','목','금','토'],
 			dayNamesMin:['일','월','화','수','목','금','토'],
 			showMonthAfterYear:true,
-			yearSuffix:'년'
+			yearSuffix:"년"
 		});
-
-
 	});
 </script>
 
-<script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+
+<!-- 우편번호 API 사용 -->
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
     function postSearch() {
         new daum.Postcode({
@@ -70,119 +67,97 @@
                         extraAddr = ' (' + extraAddr + ')';
                     }
                     // 조합된 참고항목을 해당 필드에 넣는다.
-                    document.getElementById("addr2").value = extraAddr;
+                    document.getElementById("addressName2").value = extraAddr;
                 
                 } else {
-                    document.getElementById("addr2").value = '';
+                    document.getElementById("addressName2").value = '';
                 }
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
-                document.getElementById('postCd').value = data.zonecode;
-                document.getElementById("addr").value = addr;
+                document.getElementById('zipCode').value = data.zonecode;
+                document.getElementById("addressName").value = addr;
                 // 커서를 상세주소 필드로 이동한다.
-                document.getElementById("postCd").focus();
+                document.getElementById("addressName2").focus();
             }
         }).open();
     }
 </script>
-<script>
-	$.a
-</script>
 </head>
 <body>
-	<%-- 타이틀 선언 --%>
+
 	<div class="jumbotron">
 		<div class="container">
-			<h3 class="display-4 text-center">회원가입</h3>
+			<h1 class="display-3">배송정보</h1>
 		</div>
 	</div>
-	
 	<div class="container">
-	
-		<form name="newMember" action="./join_process.jsp" class="form-horizontal" 
-		      method="post">
-		      
-		      <input type="hidden" name="retValue" id="retValue">
-		      
+		<form action="./processShippingInfo.jsp" class="form-horizontal" method="post">
+			<input type="hidden" name="cartId" value=""/>
 			<div class="form-group row">
-				<label class="col-sm-2 text-center">아이디</label>
+				<label class="col-sm-2">성명</label>
 				<div class="col-sm-3">
-					<input type="text" id="id" name="id"  class="form-control">
+					<input type="text" name="name" class="form-control"/>
 				</div>
-				<input type="button" class="btn btn-dark" style="width:70px" value="check" name="idCheck">
 			</div>
-			
 			<div class="form-group row">
-				<label class="col-sm-2 text-center">비밀번호</label>
+				<label class="col-sm-2">배송일</label>
 				<div class="col-sm-3">
-					<input type="password" id="passwd" name="passwd" class="form-control">
+					<input type="text"
+					       id="shippingDate" 
+					       name="shippingDate" 
+					       class="form-control"/>(yyyy/mm/dd)
 				</div>
 			</div>
-			
 			<div class="form-group row">
-				<label class="col-sm-2 text-center">이름</label>
+				<label class="col-sm-2">국가명</label>
 				<div class="col-sm-3">
-					<input type="text" id="name" name="name" class="form-control">
+					<input type="text" name="country" class="form-control"/>
 				</div>
 			</div>
-			
 			<div class="form-group row">
-				<label class="col-sm-2 text-center">연락처</label>
-				<div class="col-sm-3">
-					<input type="text" id="phone" name="phone" class="form-control">
+				<label class="col-sm-2">우편번호</label>
+				<div class="col-sm-6 row">
+					<input type="text" 
+						   id="zipCode"
+					       name="zipCode" 
+					       class="col-sm-2 form-control"
+					       readonly="readonly">
+					<i class="col-sm-4 fa fa-search"
+					   onclick="postSearch();"
+					   style="color:blue;font-size:30px;">
+					</i>       
 				</div>
 			</div>
-			
 			<div class="form-group row">
-				<label class="col-sm-2 text-center">이메일</label>
-				<div class="col-sm-3">
-					<input type="text" id="email" name="email" class="form-control">
+				<label class="col-sm-2">주소</label>
+				<div class="col-sm-5">
+					<input type="text" id="addressName" name="addressName" class="form-control"/>
 				</div>
 			</div>
-			
 			<div class="form-group row">
-				<label class="col-sm-2 text-center">생일</label>
-				<div class="col-sm-3">
-					<input type="text" id="birthday" name="birthday" class="form-control">
+				<label class="col-sm-2">상세주소</label>
+				<div class="col-sm-5">
+					<input type="text" id="addressName2" name="addressName2" class="form-control"/>
 				</div>
 			</div>
-
 			<div class="form-group row">
-				<label class="col-sm-2 text-center">우편번호</label>
-				<div class="col-sm-6">
-					<input id="postCd"
-					       name="postCd" 
-					       readonly="readonly"
-					       class="col-sm-2" 
-						   type="text" class="form-control">
-					<i class="col-sm-2 fa fa-search" onclick="postSearch()" style="color:#000;font-size:20px;"></i>         
+				<div class="col-sm-offset-2 col-sm-10">
+					<a href="./cart.jsp?cartId=" class="btn btn-secondary" role="button">이전</a>
+					<input type="submit" class="btn btn-primary" value="등록"/>
+					<a href="./checkOutCancelled.jsp" class="btn btn-secondary" role="button">취소</a>
 				</div>
 			</div>
-			
-			<div class="form-group row">
-				<label class="col-sm-2 text-center">주소</label>
-				<div class="col-sm-7">
-					<input id="addr" name="addr" type="text" class="form-control" readonly="readonly"/>
-				</div>
-			</div>
-			
-			<div class="form-group row">
-				<label class="col-sm-2 text-center">상세주소</label>
-				<div class="col-sm-7">
-					<input id="addr2" 
-					       name="addr2" 
-					       type="text" class="form-control"/>
-				</div>
-			</div>					
-
-		    <div class="row">
-				<div class="col-sm-5 offset-sm-5">
-					<button class="btn btn-primary" type="submit">가입 완료</button>
-				</div>
-			</div>	
-		
 		</form>
 	</div>
 	<jsp:include page="../include/footer.jsp"/>
+	
 </body>
 </html>
+
+
+
+
+
+
+
+

@@ -7,6 +7,12 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h6>&copy;footer</h6>
+<br>
+<hr>
+<br>
+<br>
+<h6 align="center">&copy;footer</h6>
+<br>
+<br>
 </body>
 </html>

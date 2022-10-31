@@ -59,7 +59,9 @@
 			<input type="text" id="date1" name="date1" class="form-control form-control-sm col-sm-5">
 			&nbsp;&nbsp;~&nbsp;&nbsp;
 			<input type="text" id="date2" name="date2" class="form-control form-control-sm col-sm-5">
+			
 		</div>
+		<a class="btn btn-sm btn-outline-primary">조회</a>
 	</div>
 </div>	
 
@@ -131,5 +133,6 @@
 		</div>
 	</div>
 </div>
+	<jsp:include page="../include/footer.jsp"/>
 </body>
 </html>
