@@ -50,4 +50,21 @@ public class ProductController {
 		
 	}
 	
+
+	//http://localhost:8080/product/review
+	@GetMapping("/review")
+	public String review() {
+		
+		return "/product/review";
+		
+	}
+	
+	//http://localhost:8080/product/reviewWrite
+	@GetMapping("/reviewWrite")
+	public String reviewWrite() {
+		
+		return "/product/reviewWrite";
+		
+	}
+	
 }

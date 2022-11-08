@@ -41,7 +41,7 @@
 
 <jsp:include page="ask.jsp"/>
 
-<jsp:include page="review.jsp"/>
+<jsp:include page="reviews.jsp"/>
 
 
 <jsp:include page="../include/footer.jsp"/>

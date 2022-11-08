@@ -7,12 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<br>
-<br>
-<table class="table table-sm table-striped col-lg-7 table-white mx-auto">
-	<div class="alert alert-dark col-lg-7 mx-auto row" style="background-color:#343a40;color:white;font-weight: bold; font-size: 17px;text-align: center;">
-		<div class="mx-auto">※ 문의 ※</div>
-		<div>+<a href="/product/askWrite" class="btn btn-sm btn-outline-dark">문의작성 &raquo;</a></div>
+<table class="table table-borderless table-striped col-lg-7 mx-auto" style="background-color:#cff0fe; ">
+	<div class="alert alert-dark col-lg-7 mx-auto row" style="background-color:#17a2b8;color:white;font-weight: bold; font-size: 17px;text-align: center;">
+		<div class="mx-auto">※ 후기 ※</div>
+		<div>+<a href="/product/reivewWrite" class="btn btn-sm btn-outline-info">리뷰작성 &raquo;</a></div>
 	</div>
   <thead>
     <tr>
@@ -26,7 +24,7 @@
     <tr>
       <th scope="row">1</th>
       <td>Mark</td>
-      <td>Otto</td>
+      <td><a href="/product/review" onclick="window.open(this.href, '_blank', 'width=800, height=600'); return false;">Otto</td>
       <td>@mdo</td>
     </tr>
     <tr>
@@ -42,8 +40,5 @@
     </tr>
   </tbody>
 </table>
-<br>
-<br>
-
 </body>
 </html>
