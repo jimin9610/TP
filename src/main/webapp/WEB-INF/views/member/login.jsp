@@ -19,7 +19,7 @@
 
 	<div class="container" align="center">
 		<div class="col-md-4 col-md-offset-4">
-			<form class="form-signin" action="/login" method="post">
+			<form class="form-signin" action="/login" method="post" name="frm">
 				<div class="form-group">
 					<label for="inputUserName" class="sr-only">아이디</label> <input
 						type="text" class="form-control" placeholder="ID"
@@ -30,9 +30,7 @@
 						type="password" class="form-control" placeholder="Password"
 						name="password" required>
 				</div>
-				<button class="btn btn-lg btn-dark btn-block" type="submit">
-					로그인
-				</button>
+				<input class="btn btn-lg btn-dark btn-block" type="button" value="로그인">
 			</form>
 		</div>
 	</div>
