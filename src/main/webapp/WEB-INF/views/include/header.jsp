@@ -4,7 +4,7 @@
 
 <%
 	//정상적인 로그인 사용자인 경우 세션 정보를 가져온다
-	String sessionId = (String) session.getAttribute("sessionId");
+	String sessionId = (String) session.getAttribute("session_id");
 %>
 
 

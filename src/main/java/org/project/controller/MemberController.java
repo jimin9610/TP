@@ -1,9 +1,12 @@
 package org.project.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/member/*")
@@ -14,6 +17,15 @@ public class MemberController {
 	public String login() {
 		
 		return "/member/login";
+		
+	}
+	
+	@PostMapping("/loginProcess")
+	public String login2(@RequestParam("id") String id, HttpSession session) {
+		
+		session.setAttribute("session_id", id);
+		
+		return "redirect:/";
 		
 	}
 	
