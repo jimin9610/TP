@@ -21,7 +21,9 @@ public class MemberController {
 	}
 	
 	@PostMapping("/loginProcess")
-	public String login2(@RequestParam("id") String id, HttpSession session) {
+	public String loginProcess(String id, HttpSession session) {
+		
+		
 		
 		session.setAttribute("session_id", id);
 		
