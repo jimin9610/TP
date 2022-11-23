@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @RequestMapping("/member/*")
 public class MemberController {
 	
+	
 	//http://localhost:8080/member/login
 	@GetMapping("/login")
 	public String login() {
@@ -21,11 +22,8 @@ public class MemberController {
 	}
 	
 	@PostMapping("/loginProcess")
-	public String loginProcess(String id, HttpSession session) {
+	public String loginProcess(String id) {
 		
-		
-		
-		session.setAttribute("session_id", id);
 		
 		return "redirect:/";
 		
